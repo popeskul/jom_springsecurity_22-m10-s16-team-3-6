@@ -17,24 +17,16 @@ import java.util.List;
 @RequiredArgsConstructor
 @Getter
 @Setter
-public class AuthorizedUser implements UserDetails {
-    private long id;
-    private String firstName;
-    private String username;
-    private String password;
-    private List<GrantedAuthority> authorities;
+public class PersonDetails implements UserDetails {
+    private User person;
 
-    public AuthorizedUser(User user) {
-        this.id = user.getId();
-        this.firstName = user.getFirstName();
-        this.username = user.getEmail();
-        this.password = user.getPassword();
-        this.authorities = List.of(new SimpleGrantedAuthority(user.getRole().getName()));
+    public PersonDetails(User user) {
+        this.person = user;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return authorities;
+        return List.of(new SimpleGrantedAuthority(person.getRole().getName()));
     }
 
     @Override
@@ -58,6 +50,28 @@ public class AuthorizedUser implements UserDetails {
     }
 
     public long getId() {
-        return id;
+        return person.getId();
+    }
+
+    @Override
+    public String getPassword() {
+        return person.getPassword();
+    }
+
+    @Override
+    public String getUsername() {
+        return person.getEmail();
+    }
+
+    public String getFirstName() {
+        return person.getFirstName();
+    }
+
+    public String getLastName() {
+        return person.getLastName();
+    }
+
+    public User getPerson() {
+        return person;
     }
 }

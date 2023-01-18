@@ -11,11 +11,11 @@ import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
-public class CustomUserDetailsService implements UserDetailsService {
+public class PersonDetailsService implements UserDetailsService {
     private final UserRepository userRepository;
 
     @Autowired
-    public CustomUserDetailsService(UserRepository userRepository) {
+    public PersonDetailsService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
@@ -30,6 +30,6 @@ public class CustomUserDetailsService implements UserDetailsService {
         }
 
         log.info("User with email {} was found", email);
-        return new AuthorizedUser(user);
+        return new PersonDetails(user);
     }
 }
