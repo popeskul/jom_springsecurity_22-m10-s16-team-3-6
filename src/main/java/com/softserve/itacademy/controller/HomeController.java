@@ -19,8 +19,6 @@ public class HomeController {
     @GetMapping({"/", "home"})
     public String home(Model model) {
         model.addAttribute("users", userService.getAll());
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        model.addAttribute("user", authentication.getPrincipal());
         return "home";
     }
 
