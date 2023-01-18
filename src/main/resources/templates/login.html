@@ -12,6 +12,11 @@
 <div class="col-md-offset-2">
     <h2>LogIn Page</h2>
 </div>
+<ul>
+    <li>mike@mail.com - 1111</li>
+    <li>nick@mail.com - 2222</li>
+    <li>nora@mail.com - 3333</li>
+</ul>
 <div th:if="${param.error}">Invalid username or password</div>
 <div th:if="${param.logout}">You have been logged out</div>
 <form class="form-horizontal group" method="POST" id="form-login" th:action="@{/form-login}">
