@@ -1,10 +1,10 @@
 package com.softserve.itacademy.controller;
 
-import com.softserve.itacademy.service.RoleService;
 import com.softserve.itacademy.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class HomeController {
@@ -17,5 +17,10 @@ public class HomeController {
     public String home(Model model) {
         model.addAttribute("users", userService.getAll());
         return "home";
+    }
+
+    @RequestMapping("/form-login")
+    public String login() {
+        return "login";
     }
 }

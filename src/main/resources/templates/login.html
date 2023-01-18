@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <title>LOGIN</title>
+</head>
+<body>
+<div th:replace="header"></div>
+
+<div class="col-md-offset-2">
+    <h2>LogIn Page</h2>
+</div>
+<ul>
+    <li>mike@mail.com - 1111</li>
+    <li>nick@mail.com - 2222</li>
+    <li>nora@mail.com - 3333</li>
+</ul>
+<div th:if="${param.error}">Invalid username or password</div>
+<div th:if="${param.logout}">You have been logged out</div>
+<form class="form-horizontal group" method="POST" id="form-login" th:action="@{/form-login}">
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="username">Username:</label>
+        <div class="col-sm-8">
+            <input type="text" id="username" class="form-control" name="username"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="password">Password:</label>
+        <div class="col-sm-8">
+            <input type="password" id="password" class="form-control" name="password"/>
+        </div>
+    </div>
+    <div class="col-sm-offset-2 col-sm-8">
+        <input class="btn btn-info" type="submit" value="Submit"/>
+    </div>
+</form>
+<br><br>
+<h3 class="form-group" style="align-content: center">Don't have an account?
+    <a th:href="@{/users/create}"> Register now!</a></h3>
+</body>
+</html>
